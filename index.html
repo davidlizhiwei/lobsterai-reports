@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LobsterAI Reports - 报告汇总</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    .header p { opacity: 0.9; font-size: 1.1em; }
+    .content { padding: 40px; }
+    .report-section { margin-bottom: 30px; }
+    .report-section h2 {
+      color: #2c3e50;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #3498db;
+    }
+    .report-list { list-style: none; }
+    .report-item {
+      background: #f8f9fa;
+      border-left: 4px solid #3498db;
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      border-radius: 0 8px 8px 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .report-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .report-item a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05em;
+      display: block;
+    }
+    .report-item a:hover { color: #3498db; }
+    .report-item .meta {
+      font-size: 0.85em;
+      color: #7f8c8d;
+      margin-top: 5px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+    .badge-new { background: #27ae60; color: white; }
+    .badge-pdf { background: #e74c3c; color: white; }
+    .badge-html { background: #3498db; color: white; }
+    .badge-docx { background: #9b59b6; color: white; }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📊 LobsterAI Reports</h1>
+      <p>研究报告汇总首页</p>
+    </div>
+    <div class="content">
+      <div class="report-section">
+        <h2>🎓 教育行业报告</h2>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="k12-market-analysis-2026/">
+              2026 中国 K12 教育市场分析报告
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">K12 市场规模、头部企业分析、未来趋势判断 - 2026/02/23</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2>🏠 家居建材报告</h2>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="bathroom-tile-selection-guide-2026.html">
+              2026 地砖选择指南
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">Comprehensive bathroom tile selection guide - 2026/02/23</div>
+          </li>
+          <li class="report-item">
+            <a href="bathroom-tile-selection-guide-2026.pdf">
+              2026 地砖选择指南 (PDF 版)
+              <span class="badge badge-pdf">PDF</span>
+            </a>
+          </li>
+          <li class="report-item">
+            <a href="china-basin-cabinet-report-2026.html">
+              2026 中国浴室柜市场分析报告
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">China basin cabinet market analysis - 2026/02/23</div>
+          </li>
+          <li class="report-item">
+            <a href="china-smart-toilet-report-2026.html">
+              2026 中国智能马桶市场分析报告
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">China smart toilet market analysis - 2026/02/23</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2>💄 美妆个护报告</h2>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="led-mask-beauty-device-review.html">
+              LED 面罩美容仪产品评测报告 2026
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">44 岁干性肌肤专属选购指南 | 三款精选产品深度评测 | 抗老紧致淡斑 - 2026/02/25</div>
+          </li>
+          <li class="report-item">
+            <a href="led-mask-beauty-device-review.pptx">
+              LED 面罩美容仪评测报告 PPT
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-pdf">PPTX</span>
+            </a>
+            <div class="meta">6 页精美幻灯片 | 专业咨询公司风格 | 含 AI 生成配图 - 2026/02/25</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2>💊 医药行业报告</h2>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="reports/tempus-ai-analysis/">
+              Tempus AI 深度分析报告 | AI+ 精准医疗龙头
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">木头姐/段永平押注 | 2025 收入飙涨 83% 至 13 亿美元 | 数据护城河构建千亿市值潜力 - 2026/02/26</div>
+          </li>
+          <li class="report-item">
+            <a href="reports/cgm-market-report-2026.html">
+              全球动态血糖仪（CGM）市场研究报告 2026
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">聚焦中美日三大市场 | 头部品牌竞争格局 | 技术趋势洞察 - 2026/02/25</div>
+          </li>
+          <li class="report-item">
+            <a href="China_Innovative_Pharma_Industry_Report_2026_EN.docx">
+              China Innovative Pharma Industry Report 2026 (EN)
+              <span class="badge badge-docx">DOCX</span>
+            </a>
+          </li>
+          <li class="report-item">
+            <a href="中国创新药产业深度研究报告_2026.docx">
+              中国创新药产业深度研究报告 2026
+              <span class="badge badge-docx">DOCX</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2>🏋️ 健身行业报告</h2>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="china-gym-industry-report-2026.html">
+              2026 年中国健身房行业研究报告
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">市场规模 9419 亿 | 健身人口 3.74 亿 | 渗透率 26.5% | AI 数字化转型 - 2026/02/26</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2>📰 每日资讯</h2>
+
+        <h3 style="color: #3498db; font-size: 1.2em; margin: 20px 0 10px 0;">🤖 AI 新闻日报</h3>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="ai-news-daily-20260228.html">
+              AI News Daily - 2026/02/28
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">OpenAI 1100 亿美元融资创纪录 | 特朗普禁用 Anthropic | Block 裁员 40% | 月之暗面估值破百亿 - 2026/02/28</div>
+          </li>
+          <li class="report-item">
+            <a href="ai-news-daily-20260226.html">
+              AI News Daily - 2026/02/26
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">NVIDIA 营收 681 亿创新高 | Anthropic 指控中国 AI 公司蒸馏模型 | 月之暗面 7 亿美元融资 - 2026/02/26</div>
+          </li>
+          <li class="report-item">
+            <a href="reports/ai-news-daily-20260225.html">
+              AI News Daily - 2026/02/25
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">每日 AI 领域最新资讯 - 2026/02/25</div>
+          </li>
+          <li class="report-item">
+            <a href="ai-news-daily/archive.html">
+              📚 AI 新闻日报 - 历史归档
+              <span class="badge badge-html">ARCHIVE</span>
+            </a>
+            <div class="meta">查看所有历史日报</div>
+          </li>
+        </ul>
+
+        <h3 style="color: #3498db; font-size: 1.2em; margin: 20px 0 10px 0;">📰 FT 日报</h3>
+        <ul class="report-list">
+          <li class="report-item">
+            <a href="ft-daily-digest/ft_digest_20260223.html">
+              FT 日报 - 2026/02/23
+              <span class="badge badge-new">NEW</span>
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">金融时报每日精选摘要</div>
+          </li>
+          <li class="report-item">
+            <a href="ft-daily-digest/ft_digest_20260220.html">
+              FT 日报 - 2026/02/20
+              <span class="badge badge-html">HTML</span>
+            </a>
+            <div class="meta">金融时报每日精选摘要</div>
+          </li>
+          <li class="report-item">
+            <a href="ft-daily-digest/archive.html">
+              📚 FT 日报 - 历史归档
+              <span class="badge badge-html">ARCHIVE</span>
+            </a>
+            <div class="meta">查看所有历史日报</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Hosted on GitHub Pages | Updated: 2026-02-28</p>
+    </div>
+  </div>
+</body>
+</html>
