@@ -1,6 +1,6 @@
-# 📦 project
+# 📦 lobsterai-reports
 
-project - A general project
+lobsterai-reports - A general project
 
 ## ✨ Features
 
@@ -21,7 +21,7 @@ ls -la
 ## 📁 Project Structure
 
 ```
-project/
+lobsterai-reports/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
@@ -38,4 +38,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-**Created with ❤️ on 2026-02-28**
+**Created with ❤️ on 2026-03-02**
