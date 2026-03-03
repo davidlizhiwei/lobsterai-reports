@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 新闻日报（全球版）| 2026年3月4日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .header .date {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        .executive-summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px 40px;
+            border-left: 5px solid #667eea;
+        }
+        .executive-summary h2 {
+            color: #1a1a2e;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .executive-summary p {
+            line-height: 1.8;
+            color: #495057;
+            font-size: 15px;
+        }
+        .section {
+            padding: 35px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+        .section-icon {
+            font-size: 28px;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        .news-item {
+            margin-bottom: 28px;
+            padding: 22px;
+            background: #fafbfc;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .news-item:last-child {
+            margin-bottom: 0;
+        }
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .news-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #6c757d;
+        }
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .heat-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .heat-high {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .heat-medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        .heat-low {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .news-summary {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #495057;
+            margin-bottom: 12px;
+        }
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .news-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        .impact-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #1565c0;
+            line-height: 1.6;
+        }
+        .impact-box strong {
+            color: #0d47a1;
+        }
+        .footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.7);
+            padding: 30px 40px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #495057;
+            margin-right: 8px;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            .header, .section, .executive-summary {
+                padding: 25px 20px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .news-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="subtitle">LobsterAI Global Intelligence</div>
+                <h1>📰 AI 新闻日报（全球版）</h1>
+                <div class="date">2026年3月4日 | 星期三</div>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="executive-summary">
+            <h2>💼 主编寄语</h2>
+            <p>过去24小时，全球AI领域最值得关注的是<strong>OpenAI与美国国防部合作协议的争议与修正</strong>——Sam Altman承认协议"看起来机会主义"并承诺修改条款以限制监控用途。与此同时，<strong>Anthropic因大规模服务中断</strong>引发用户迁移潮，Claude网页版和编码工具一度停摆。<strong>中国AI市场迎来历史性时刻</strong>：2月份国产大模型月度调用量首次超越美国，MiniMax、DeepSeek、月之暗面三款模型跻身全球前五。科技巨头继续加码AI投资：Meta宣布2026年AI支出最高达1350亿美元，NVIDIA向光子学公司投资40亿美元以扩展AI基础设施。</p>
+        </div>
+
+        <!-- Breaking News -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🔥</span>
+                <h2 class="section-title">头条重磅</h2>
+            </div>
+
+            <div class="news-item" style="border-left-color: #dc3545;">
+                <div class="news-title">OpenAI修正与美国国防部合作协议，Sam Altman承认"看起来机会主义"</div>
+                <div class="news-meta">
+                    <span>📍 OpenAI</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Reuters / CNBC / The Guardian</span>
+                    <span class="heat-indicator heat-high">🔥🔥🔥 热度极高</span>
+                </div>
+                <div class="news-summary">
+                    OpenAI CEO Sam Altman在争议声中宣布修改与美国国防部（Department of War）的合作协议。此前曝光的协议允许军方将ChatGPT用于"大规模监控"目的，引发员工离职和用户抗议。Altman承认协议"看起来机会主义"，并表示将加入明确的 surveillance（监控）限制条款。这是OpenAI自成立以来最严重的公关危机之一。
+                </div>
+                <a href="https://www.reuters.com/business/openai-amending-deal-with-pentagon-ceo-altman-says-2026-03-03/" class="news-link" target="_blank">🔗 阅读原文 (Reuters)</a>
+                <a href="https://www.cnbc.com/2026/03/03/openai-sam-altman-pentagon-deal-amended-surveillance-limits.html" class="news-link" target="_blank" style="margin-left: 15px;">🔗 CNBC报道</a>
+                <div class="impact-box">
+                    <strong>影响解读：</strong>此事件标志着AI公司与政府合作的边界正在被重新定义，可能推动整个行业建立更透明的国防合作准则。短期内OpenAI可能面临用户流失，长期看有助于建立更负责任的AI治理框架。
+                </div>
+            </div>
+
+            <div class="news-item" style="border-left-color: #dc3545;">
+                <div class="news-title">Anthropic Claude遭遇大规模服务中断，数百万用户受影响</div>
+                <div class="news-meta">
+                    <span>📍 Anthropic</span>
+                    <span>🕐 2026-03-02 ~ 03-03</span>
+                    <span>📰 Bloomberg / TechCrunch / CNN</span>
+                    <span class="heat-indicator heat-high">🔥🔥🔥 热度极高</span>
+                </div>
+                <div class="news-summary">
+                    Anthropic的Claude AI服务在3月2日至3日期间遭遇"前所未有的大规模需求激增"导致的服务中断，Claude.ai网页版、Claude Code编程工具及API均受到影响。这是Claude历史上最严重的一次宕机事件。与此同时，Anthronic推出免费记忆功能吸引ChatGPT用户迁移，Claude iOS应用下载量飙升至榜首。
+                </div>
+                <a href="https://www.bloomberg.com/news/articles/2026-03-02/anthropic-s-claude-chatbot-goes-down-for-thousands-of-users" class="news-link" target="_blank">🔗 阅读原文 (Bloomberg)</a>
+                <a href="https://techcrunch.com/2026/03/03/claude-code-rolls-out-a-voice-mode-capability/" class="news-link" target="_blank" style="margin-left: 15px;">🔗 Claude语音模式</a>
+                <div class="impact-box">
+                    <strong>影响解读：</strong>服务中断暴露了快速增长的AI公司基础设施脆弱性。Anthropic正借此时机大力推广其免费记忆功能和语音能力，试图从OpenAI的争议中抢占市场份额。
+                </div>
+            </div>
+        </div>
+
+        <!-- US News -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🇺🇸</span>
+                <h2 class="section-title">美国动态</h2>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Amazon与OpenAI达成50亿美元战略合作，AWS Bedrock整合GPT模型</div>
+                <div class="news-meta">
+                    <span>📍 Amazon / OpenAI</span>
+                    <span>🕐 2026-03-02</span>
+                    <span>📰 AWS Blog / GeekWire</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    Amazon宣布与OpenAI达成多年期战略合作协议，总价值约50亿美元。AWS Bedrock平台将原生支持OpenAI的GPT系列模型，企业客户可通过AWS直接调用GPT-5.3等最新模型。同时Bedrock推出Stateful API和Projects API，支持多轮对话状态管理和项目级资源组织。
+                </div>
+                <a href="https://aws.amazon.com/blogs/aws/aws-weekly-roundup-openai-partnership-aws-elemental-inference-strands-labs-and-more-march-2-2026/" class="news-link" target="_blank">🔗 AWS官方公告</a>
+                <a href="https://www.geekwire.com/2026/filings-how-amazons-50b-openai-deal-actually-works-and-what-theyre-keeping-secret/" class="news-link" target="_blank" style="margin-left: 15px;">🔗 GeekWire分析</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Apple发布M5 Pro/Max芯片，新款MacBook Air内置更强AI能力</div>
+                <div class="news-meta">
+                    <span>📍 Apple</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Apple Newsroom / TechCrunch / The Verge</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    Apple在3月3日发布会上推出搭载M5 Pro和M5 Max芯片的新款MacBook Pro和MacBook Air。新芯片神经网络引擎性能提升40%，专为本地AI推理优化。同时发布的iPhone 17e售价599美元起，内置Apple Intelligence功能。不过据彭博社报道，Siri的重大AI升级可能推迟至3月之后。
+                </div>
+                <a href="https://www.apple.com/mz/newsroom/2026/03/apple-debuts-m5-pro-and-m5-max-to-supercharge-the-most-demanding-pro-workflows/" class="news-link" target="_blank">🔗 Apple官方</a>
+                <a href="https://techcrunch.com/2026/03/03/apple-unveils-new-macbook-air-and-macbook-pro-with-m5/" class="news-link" target="_blank" style="margin-left: 15px;">🔗 TechCrunch</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Meta计划2026年AI投资高达1350亿美元，加速Llama 4研发</div>
+                <div class="news-meta">
+                    <span>📍 Meta</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Yahoo Finance / Fool.com</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    Meta宣布2026年人工智能相关支出将达到650亿至1350亿美元区间上限，主要用于数据中心建设和AI模型训练。公司正在加速开发Llama 4，预计年底前发布增强版本。Llama已被批准供美国政府机构使用，并向欧洲和亚洲盟友开放。
+                </div>
+                <a href="https://finance.yahoo.com/news/meta-plans-spend-135-billion-162500394.html" class="news-link" target="_blank">🔗 阅读原文</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">NVIDIA向光子学公司投资40亿美元，布局下一代AI基础设施</div>
+                <div class="news-meta">
+                    <span>📍 NVIDIA</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 NVIDIA Newsroom / Yahoo Finance</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    NVIDIA宣布将向光子学芯片制造商投资40亿美元，以解决AI数据中心的能耗和带宽瓶颈。黄仁勋表示光子互连是扩展AI基础设施的关键技术。同时NVIDIA联合全球电信运营商承诺建设基于开放安全AI原生平台的6G网络。
+                </div>
+                <a href="http://nvidianews.nvidia.com/news/nvidia-and-global-telecom-leaders-commit-to-build-6g-on-open-and-secure-ai-native-platforms" class="news-link" target="_blank">🔗 NVIDIA官方</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">ChatGPT推出GPT-5.3 Instant模型，减少"请冷静"式回应</div>
+                <div class="news-meta">
+                    <span>📍 OpenAI</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 TechCrunch</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    OpenAI发布GPT-5.3 Instant新模型，针对用户反馈的过度谨慎问题进行优化。新模型减少了不必要的拒绝回答和"我无法协助这个请求"式的回应，在保持安全性的同时提高实用性。
+                </div>
+                <a href="https://techcrunch.com/2026/03/03/chatgpts-new-gpt-5-3-instant-model-will-stop-telling-you-to-calm-down/" class="news-link" target="_blank">🔗 TechCrunch</a>
+            </div>
+        </div>
+
+        <!-- China News -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🇨🇳</span>
+                <h2 class="section-title">中国进展</h2>
+            </div>
+
+            <div class="news-item" style="border-left-color: #e74c3c;">
+                <div class="news-title">历史性突破：中国AI模型月度调用量首次超越美国，三款国产模型跻身全球前五</div>
+                <div class="news-meta">
+                    <span>📍 MiniMax / DeepSeek / 月之暗面</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 多家财经媒体</span>
+                    <span class="heat-indicator heat-high">🔥🔥🔥 热度极高</span>
+                </div>
+                <div class="news-summary">
+                    2026年2月数据显示，中国AI大模型的月度调用量首次超越美国，标志着全球AI竞争格局的重大转折。MiniMax M2.5、DeepSeek V3、月之暗面Kimi三款国产模型占据全球使用量前五名中的三席。其中字节跳动豆包月活跃用户位居中国第一，DeepSeek紧随其后。这一趋势反映了中国AI应用在消费端的快速普及。
+                </div>
+                <a href="https://technews.tw/2026/03/03/minimax-global-announces-full-year-2025-financial-results/" class="news-link" target="_blank">🔗 MiniMax财报</a>
+                <div class="impact-box">
+                    <strong>影响解读：</strong>这是中国AI产业发展的重要里程碑，表明国产大模型在用户体验和商业化方面取得实质性突破。预计将进一步提振国内AI投资信心，加速行业应用落地。
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">阿里巴巴统一大模型品牌为"千问"，春节DAU达7352万获马斯克点赞</div>
+                <div class="news-meta">
+                    <span>📍 阿里巴巴 / 通义千问</span>
+                    <span>🕐 2026-03-02</span>
+                    <span>📰 新浪财经 / 新京报 / TechNode</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    阿里巴巴宣布将大模型品牌统一为"千问"，原"通义"实验室作为AI机构的组织名称保留。春节期间千问日活用户达到7352万新高。Qwen 3.5开源系列发布后获得马斯克在X平台点赞："智能密度令人印象深刻"。阿里同时发布四款开源模型，覆盖不同参数规模。
+                </div>
+                <a href="https://finance.sina.com.cn/cj/2026-03-02/doc-inhpqkns8341185.shtml" class="news-link" target="_blank">🔗 新浪财经</a>
+                <a href="https://cn.technode.com/post/2026-03-02/alibaba-qwen-brand-unified-7352m-dau-spring-festival/" class="news-link" target="_blank" style="margin-left: 15px;">🔗 TechNode</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">腾讯混元3D落地欧洲，腾讯云法兰克福新增第三个可用区</div>
+                <div class="news-meta">
+                    <span>📍 腾讯 / 混元</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 新浪财经 / 阿斯达克</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    在MWC 2026大会上，腾讯云宣布将在德国法兰克福新增第三个可用区，进一步扩展欧洲云AI业务。混元3D大模型正式落地欧洲市场，为当地企业提供中文理解能力和多模态生成服务。这是腾讯AI出海战略的重要一步。
+                </div>
+                <a href="https://finance.sina.com.cn/stock/relnews/hk/2026-03-03/doc-inhpsttm4029403.shtml" class="news-link" target="_blank">🔗 阅读原文</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">MiniMax发布首份财报：收入大增160%，毛利率翻倍但亏损扩大</div>
+                <div class="news-meta">
+                    <span>📍 MiniMax</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 TechNews / MoneyDJ / Forbes China</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    MiniMax（稀宇科技）发布上市后首份年度财报：2025财年收入同比增长160%，毛利率实现翻倍增长，但经调整净亏损达2.5亿美元（约合人民币18亿元），同比扩大3倍。公司股价在大跌后反弹19%，摩根士丹利上调目标价至990港元，看好M3模型动能。
+                </div>
+                <a href="https://technews.tw/2026/03/03/minimax-global-announces-full-year-2025-financial-results/" class="news-link" target="_blank">🔗 TechNews</a>
+                <a href="https://www.forbeschina.com/activity/news/71179" class="news-link" target="_blank" style="margin-left: 15px;">🔗 Forbes China</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">智谱AI就GLM Coding Plan问题致歉，公布补偿方案</div>
+                <div class="news-meta">
+                    <span>📍 智谱AI</span>
+                    <span>🕐 2026-02-24 ~ 03-02</span>
+                    <span>📰 UDN / Yahoo财经 / PChome</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    智谱AI就GLM Coding Plan升级过程中出现的三大问题公开致歉，包括代码生成质量下降、响应速度变慢、部分功能异常等问题。公司已公布退款与权益补偿方案，承诺在两周内完成系统修复。此次事件导致智谱股价一度下跌23%。
+                </div>
+                <a href="https://udn.com/news/story/7333/9337631" class="news-link" target="_blank">🔗 联合新闻网</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">月之暗面寻求100亿美元估值进行新一轮融资</div>
+                <div class="news-meta">
+                    <span>📍 月之暗面 / Moonshot</span>
+                    <span>🕐 2026-03-02</span>
+                    <span>📰 17173 / KuCoin News</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    消息称月之暗面（Moonshot AI）正在寻求以100亿美元估值进行新一轮融资，距离成为独角兽仅两年时间。公司旗下的Kimi智能助手在中国市场增长迅速，是挑战OpenAI和Google的重要力量。
+                </div>
+                <a href="http://news.17173.com/content/02172026/160332595.shtml" class="news-link" target="_blank">🔗 阅读原文</a>
+            </div>
+        </div>
+
+        <!-- Technology Frontiers -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🔬</span>
+                <h2 class="section-title">技术前沿</h2>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Google DeepMind CEO警告：内存短缺成为AI发展瓶颈</div>
+                <div class="news-meta">
+                    <span>📍 Google DeepMind</span>
+                    <span>🕐 2026-03-01</span>
+                    <span>📰 Yahoo奇摩 / TechNews</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    Google DeepMind首席执行官Demis Hassabis公开表示，内存（Memory）短缺正成为AI发展的主要瓶颈，供应链限制可能阻碍大型语言模型的进一步扩展。他呼吁业界 urgent research needed to tackle AI threats，同时预测AI将迎来"复兴"时代，带来"radical abundance"。
+                </div>
+                <a href="https://tw.stock.yahoo.com/news/google-deepmind-ceo-%E8%A8%98%E6%86%B6%E9%AB%94%E7%9F%AD%E7%BC%BA%E6%88%90ai%E7%99%BC%E5%B1%95-%E7%93%B6%E9%A0%88-181323028.html" class="news-link" target="_blank">🔗 Yahoo奇摩</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">ASML规划超越EUV的下一代AI芯片制造工具</div>
+                <div class="news-meta">
+                    <span>📍 ASML</span>
+                    <span>🕐 2026-03-02</span>
+                    <span>📰 Reuters</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    光刻机巨头ASML披露正在研发超越现有EUV技术的下一代芯片制造设备，以满足AI芯片对更小制程、更高密度的需求。新技术将采用High-NA EUV（高数值孔径极紫外光刻），预计2028年投入商用。
+                </div>
+                <a href="https://www.reuters.com/world/asia-pacific/asml-plots-future-chipmaking-tools-ai-beyond-euv-2026-03-02/" class="news-link" target="_blank">🔗 Reuters</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">高通CEO：AI Agent将取代手机成为数字生活中心</div>
+                <div class="news-meta">
+                    <span>📍 Qualcomm</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Bloomberg</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    高通CEO Cristiano Amon在MWC 2026上预言，AI Agent（智能体）将在未来5-10年内取代智能手机，成为人们与数字世界交互的主要入口。他认为多模态AI和端侧算力的结合将催生全新的设备形态。
+                </div>
+                <a href="https://www.bloomberg.com/news/articles/2026-03-03/ai-agents-will-supplant-phones-as-digital-hub-qualcomm-ceo-says" class="news-link" target="_blank">🔗 Bloomberg</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">DeepSeek将发布V4模型，整合华为芯片迎战美国队</div>
+                <div class="news-meta">
+                    <span>📍 DeepSeek</span>
+                    <span>🕐 2026-03月初</span>
+                    <span>📰 TechNice / Yahoo Finance</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    DeepSeek即将发布备受期待的V4大模型，该模型深度适配华为昇腾等国产芯片，在美国出口管制背景下展现中国AI自主可控能力。此前DeepSeek被曝暂时 withheld 最新模型不给美国芯片厂商测试，引发行业关注。
+                </div>
+                <a href="https://www.technice.com.tw/issues/ai/207930/" class="news-link" target="_blank">🔗 TechNice</a>
+            </div>
+        </div>
+
+        <!-- Funding & M&A -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">💰</span>
+                <h2 class="section-title">融资并购</h2>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">桥水基金：科技巨头2026年AI投资将达6500亿美元</div>
+                <div class="news-meta">
+                    <span>📍 Bridgewater / 行业预测</span>
+                    <span>🕐 2026-02-23</span>
+                    <span>📰 Reuters</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    全球最大对冲基金桥水（Bridgewater）发布报告预测，2026年美国科技巨头在AI领域的总投资将达到约6500亿美元，较2025年增长超过40%。投资主要集中在数据中心、GPU采购和模型训练三个方向。
+                </div>
+                <a href="https://www.reuters.com/business/big-tech-invest-about-650-billion-ai-2026-bridgewater-says-2026-02-23/" class="news-link" target="_blank">🔗 Reuters</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">AI芯片能效初创公司融资5亿美元</div>
+                <div class="news-meta">
+                    <span>📍 AI Chip Startup</span>
+                    <span>🕐 2026-03月初</span>
+                    <span>📰 Wall Street Journal</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    一家专注于提升AI芯片能效的初创公司完成5亿美元融资，投资方包括多家顶级风投机构。该公司开发的技术可将AI训练和推理的能耗降低30-50%，解决AI发展的可持续性问题。
+                </div>
+                <a href="https://www.wsj.com/tech/startup-making-ai-chips-more-power-efficient-raises-500-million-35edbfd1" class="news-link" target="_blank">🔗 WSJ</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">加拿大政府出资850万加元支持40个AI项目</div>
+                <div class="news-meta">
+                    <span>📍 Canada Government</span>
+                    <span>🕐 2026-03月初</span>
+                    <span>📰 Canada.ca</span>
+                    <span class="heat-indicator heat-low">🔥 一般热度</span>
+                </div>
+                <div class="news-summary">
+                    加拿大创新部长宣布拨款850万加元（约合620万美元）支持大西洋地区40个AI项目，帮助当地中小企业采用AI技术提升竞争力。这是加拿大国家AI战略的组成部分。
+                </div>
+                <a href="https://www.canada.ca/en/atlantic-canada-opportunities/news/2026/03/minister-solomon-announces-85m-for-40-ai-projects-to-help-atlantic-canadian-businesses-grow.html" class="news-link" target="_blank">🔗 加拿大政府官网</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">ArmorCode完成1600万美元融资，扩展Agentic AI安全平台</div>
+                <div class="news-meta">
+                    <span>📍 ArmorCode</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Ventureburn</span>
+                    <span class="heat-indicator heat-low">🔥 一般热度</span>
+                </div>
+                <div class="news-summary">
+                    AI安全公司ArmorCode宣布完成1600万美元融资，用于扩展其Agentic AI驱动的应用安全平台。该平台可自动发现和修复软件漏洞，满足企业对AI安全日益增长的需求。
+                </div>
+                <a href="https://ventureburn.com/armorcode-raises-16m-agentic-ai/" class="news-link" target="_blank">🔗 Ventureburn</a>
+            </div>
+        </div>
+
+        <!-- Industry Insights -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📈</span>
+                <h2 class="section-title">产业观察</h2>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Bloomberg：中国AI上市热潮让投资者"盲目飞行"</div>
+                <div class="news-meta">
+                    <span>📍 市场分析</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Bloomberg</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    Bloomberg发表分析文章指出，中国AI公司的IPO热潮正在让投资者面临信息不对称的挑战。多家AI初创企业在缺乏盈利路径的情况下获得高估值，市场存在过热风险。文章建议投资者更加关注企业的实际营收和商业模式可持续性。
+                </div>
+                <a href="https://www.bloomberg.com/news/articles/2026-03-03/china-s-ai-listings-boom-leaves-investors-flying-blind" class="news-link" target="_blank">🔗 Bloomberg</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Forbes：中国AI创业者被指"复制"美国技术，但仍获巨额融资</div>
+                <div class="news-meta">
+                    <span>📍 行业评论</span>
+                    <span>🕐 2026-03-02</span>
+                    <span>📰 Forbes</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    Forbes刊登长文探讨中国AI创业公司（包括MiniMax、DeepSeek、月之暗面）被指模仿美国技术的争议。尽管存在质疑，这些公司仍获得数十亿美元融资，创始人身家暴涨。文章分析了中美AI创新的异同以及全球资本对中国AI的追逐。
+                </div>
+                <a href="https://www.forbes.com/sites/phoebeliu/2026/03/02/copying-ai-chinese-founders-minimax-deepseek-moonshot-billions/" class="news-link" target="_blank">🔗 Forbes</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">英国预算责任办公室：AI或推高失业率但未必促进增长</div>
+                <div class="news-meta">
+                    <span>📍 政策研究</span>
+                    <span>🕐 2026-03-03</span>
+                    <span>📰 Bloomberg</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    英国预算责任办公室（OBR）发布报告指出，AI技术可能在短期内推高失业率，且不一定能带来预期的经济增长。报告呼吁政府制定更有针对性的AI政策，确保技术红利能够广泛分配。
+                </div>
+                <a href="https://www.bloomberg.com/news/articles/2026-03-03/ai-could-lift-uk-unemployment-and-fail-to-boost-growth-obr-says" class="news-link" target="_blank">🔗 Bloomberg</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">TechCrunch：AI投资者对SaaS公司的期望已发生根本转变</div>
+                <div class="news-meta">
+                    <span>📍 投资趋势</span>
+                    <span>🕐 2026-03-01</span>
+                    <span>📰 TechCrunch</span>
+                    <span class="heat-indicator heat-medium">🔥 中等热度</span>
+                </div>
+                <div class="news-summary">
+                    多位顶级AI投资人向TechCrunch透露，他们对AI SaaS公司的评估标准已经发生根本性变化。单纯的AI功能已不足以吸引投资，投资者更看重数据护城河、垂直场景深耕和可持续的获客模式。
+                </div>
+                <a href="https://techcrunch.com/2026/03/01/investors-spill-what-they-arent-looking-for-anymore-in-ai-saas-companies/" class="news-link" target="_blank">🔗 TechCrunch</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">中东局势紧张，科技巨头AI投资面临地缘政治风险</div>
+                <div class="news-meta">
+                    <span>📍 地缘政治</span>
+                    <span>🕐 2026-03-02</span>
+                    <span>📰 Reuters / CNBC</span>
+                    <span class="heat-indicator heat-high">🔥🔥 高热度</span>
+                </div>
+                <div class="news-summary">
+                    随着中东局势升级，亚马逊在该地区的多个数据中心遭到袭击，引发市场对科技巨头海外AI基础设施安全的担忧。分析师指出，微软、Google、Amazon等公司在全球部署的AI数据中心正面临越来越大的地缘政治风险。
+                </div>
+                <a href="https://www.reuters.com/business/retail-consumer/escalating-tensions-turn-spotlight-big-techs-ai-investments-middle-east-2026-03-02/" class="news-link" target="_blank">🔗 Reuters</a>
+                <a href="https://www.cnbc.com/2026/03/03/anthropic-fallout-iran-war-tech-military-ai.html" class="news-link" target="_blank" style="margin-left: 15px;">🔗 CNBC</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>📊 生成时间：2026-03-04 06:50 CST | 数据来源：LobsterAI 全球精选</p>
+            <p>📌 覆盖范围：过去24小时全球重要AI新闻 | 收录标准：权威媒体 + 官方信源</p>
+            <p>🔗 报告门户：<a href="https://davidliqiu.github.io/reports/" style="color: #667eea;">https://davidliqiu.github.io/reports/</a></p>
+            <p style="margin-top: 15px; opacity: 0.6;">© 2026 LobsterAI Daily | 本报告仅供参考，不构成投资建议</p>
+        </div>
+    </div>
+</body>
+</html>
